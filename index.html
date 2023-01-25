@@ -53,7 +53,7 @@
 
     .box img {
         position: relative;
-        left: 66px;
+        /* left: 66px; */
     }
 
     .box button {
@@ -79,6 +79,12 @@
         max-height: 300px;
         margin: 10px auto;
     } */
+
+    .box2{
+        display: flex;
+align-items: center;
+justify-content: center;
+    }
 
     .error {
         animation: vaibhav 0.5s linear 10;
@@ -114,7 +120,7 @@
             <p>Generate Your QR</p>
             <input type="text" id="text" placeholder="Write The QR Code You Need">
             <div class="box2" id="Genbox">
-                <img src="" id="img">
+                <img src="" id="img" >
             </div>
             <button onclick="bnao()">Genrete</button>
         </div>
@@ -128,6 +134,7 @@
         function bnao() {
             if (text.value.length > 0) {
                 img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + text.value;
+                // Genbox.classList.add('show-img')
             }
             else {
                 text.classList.add('error');
