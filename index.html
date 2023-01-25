@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Genretor</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #cfd1e1;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+        background: #fff;
+        width: 300px;
+        border-radius: 5px;
+    }
+
+    .box {
+        display: grid;
+        margin: 35px 25px;
+        grid-row-gap: 8px;
+
+
+    }
+
+    .box p {
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .box input {
+        height: 30px;
+        font-size: 14px;
+        border-radius: 5px;
+        outline: 0;
+        border: 1px solid gray;
+        padding: 4px;
+        /* transition: 0s; */
+    }
+
+    .box img {
+        position: relative;
+        left: 66px;
+    }
+
+    .box button {
+        height: 30px;
+        font-size: 14px;
+        border-radius: 5px;
+        border: 1px solid #a2a2f9;
+        background: #a2a2f9;
+        cursor: pointer;
+    }
+
+    /* #Genbox{
+        border-radius: 3px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 1s;
+    }
+    #Genbox img{
+        width: 100%;
+        padding: 5px;
+    }
+    #Genbox .show-img{
+        max-height: 300px;
+        margin: 10px auto;
+    } */
+
+    .error {
+        animation: vaibhav 0.5s linear 10;
+
+    }
+
+    @keyframes vaibhav {
+        0% {
+            transform: translateX(0);
+        }
+
+        25% {
+            transform: translateX(-2px);
+        }
+
+        50% {
+            transform: translateX(0);
+        }
+
+        75% {
+            transform: translateX(2px);
+        }
+
+        100% {
+            transform: translateX(0);
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <p>Genrete Your QR</p>
+            <input type="text" id="text" placeholder="Write The QR Code You Need">
+            <div class="box2" id="Genbox">
+                <img src="" id="img">
+            </div>
+            <button onclick="bnao()">Genrete</button>
+        </div>
+    </div>
+
+    <script>
+        let text = document.getElementById('text')
+        let img = document.getElementById('img')
+        let Genbox = document.getElementById('Genbox')
+
+        function bnao() {
+            if (text.value.length > 0) {
+                img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + text.value;
+            }
+            else {
+                text.classList.add('error');
+                setTimeout(() => {
+                    text.classList.remove('error');
+                }, 1000)
+            }
+        }
+    </script>
+</body>
+
+</html>
